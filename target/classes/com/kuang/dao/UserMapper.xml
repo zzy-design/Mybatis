@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kuang.dao.UserMapper">
+<!--    <resultMap id="" type="">-->
+<!--        <result column="age" property="passWord"/>-->
+<!--    </resultMap>-->
+
+    <select id="getUserList" resultType="User" useCache="true" >
+        select * from mybatis.user
+    </select>
+
+    <select id="getUserById" parameterType="int" resultType="User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="getUserByLimit" parameterType="map" resultType="User">
+        select * from user limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="getUserByName" resultType="User">
+        select * from user where name like '%${value}%'
+    </select>
+
+    <insert id="insertUser" parameterType="User" flushCache="true">
+        insert into user (id,name, age) values (#{id},#{name},#{age})
+    </insert>
+
+    <insert id="insertUser2" parameterType="map" flushCache="true">
+        insert into user (id,name,age) values (#{userId},#{userName},#{userAge})
+    </insert>
+
+    <update id="updataUser" parameterType="com.kuang.pojo.User">
+        update user set name = #{name },age = #{age} where id = #{id} ;
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id = #{value}
+    </delete>
+
+
+</mapper>
