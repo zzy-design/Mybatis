@@ -124,7 +124,6 @@ public class UserMapperTest {
         // 尼泊尔, 缅甸,巴西, 法国, 德国, 西班牙, 俄罗斯, 英国, 荷兰.
         //把这16支队伍随机的分为四个小组, 打印每个小组中的队伍(使用集合)
         List<String> list = new ArrayList<>();
-        List<String> list1 = new ArrayList<>();
         list.add("中国");
         list.add("朝鲜");
         list.add("韩国");
@@ -142,7 +141,6 @@ public class UserMapperTest {
         list.add("俄罗斯");
         list.add("荷兰");
         Collections.shuffle(list);
-//      new LinkedList<>().pop();
         System.out.println("第一支队伍:" + list.subList(0, 4));
         System.out.println("第二支队伍:" + list.subList(4, 8));
         System.out.println("第三支队伍:" + list.subList(8, 12));
