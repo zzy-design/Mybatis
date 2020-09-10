@@ -141,6 +141,8 @@ public class UserMapperTest {
         list.add("俄罗斯");
         list.add("荷兰");
         Collections.shuffle(list);
+        logger.info("打印"+list);
+        System.out.println("分好的队伍:");
         System.out.println("第一支队伍:" + list.subList(0, 4));
         System.out.println("第二支队伍:" + list.subList(4, 8));
         System.out.println("第三支队伍:" + list.subList(8, 12));
