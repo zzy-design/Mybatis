@@ -3,13 +3,10 @@ package com.kuang.dao.User;
 import com.kuang.Utils.MybatisUtils;
 import com.kuang.dao.UserMapper;
 import com.kuang.pojo.User;
-import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import sun.text.resources.el.FormatData_el;
 
-import java.text.Format;
 import java.util.*;
 
 public class UserMapperTest {
@@ -141,12 +138,53 @@ public class UserMapperTest {
         list.add("俄罗斯");
         list.add("荷兰");
         Collections.shuffle(list);
-        logger.info("打印"+list);
+        logger.info("打印" + list);
         System.out.println("分好的队伍:");
         System.out.println("第一支队伍:" + list.subList(0, 4));
         System.out.println("第二支队伍:" + list.subList(4, 8));
         System.out.println("第三支队伍:" + list.subList(8, 12));
         System.out.println("第四支队伍:" + list.subList(12, 16));
     }
-}
 
+    @Test
+    public void test() {
+        int[][] arr = new int[2][3];
+        System.out.println(arr.length);
+        System.out.println(arr[0].length);
+        System.out.println(arr[1][1]);
+    }
+
+    @Test
+    public void Find() {
+        int target = 5;
+        int falg = 0;
+        int[][] array = new int[][]{{1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15}};
+//        System.out.println(array[1][1]);
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                if (target == array[i][j]) {
+                    falg++;
+
+                }
+            }
+        }
+        System.out.println(falg == 1 ? "存在" : "不存在");
+    }
+
+    @Test
+    public void replaceSpace() {
+        StringBuffer str = new StringBuffer("we are words");
+        if (str.toString().isEmpty()) {
+            System.out.println("null");
+        }
+        StringBuffer sbr = new StringBuffer();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ' ') {
+                sbr.append("%20");
+            } else {
+                sbr.append(str.charAt(i));
+            }
+        }
+
+    }
+}
