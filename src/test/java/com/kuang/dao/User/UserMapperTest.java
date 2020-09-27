@@ -6,6 +6,7 @@ import com.kuang.pojo.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import redis.clients.jedis.Jedis;
 
 import java.util.*;
 
@@ -185,6 +186,21 @@ public class UserMapperTest {
                 sbr.append(str.charAt(i));
             }
         }
+        System.out.println(sbr);
+    }
 
+    @Test
+    public void redisTest() {
+        Jedis jedis = new Jedis("localhost");
+        // 如果 Redis 服务设置来密码，需要下面这行，没有就不需要
+        // jedis.auth("123456");
+        System.out.println("连接成功");
+        //查看服务是否运行
+        System.out.println("服务正在运行: " + jedis.ping());
+        //设置 redis 字符串数据
+        jedis.set("runoobkey", "www.runoob.com");
+        String r = jedis.get("r");
+        // 获取存储的数据并输出
+        System.out.println("redis 存储的字符串为: "+ jedis.get("runoobkey"));
     }
 }
