@@ -203,6 +203,7 @@ public class UserMapperTest {
         // 获取存储的数据并输出
         System.out.println("redis 存储的字符串为: " + jedis.get("runoobkey"));
         System.out.println("------------");
+
         jedis.lpush("site-list", "Runoob");
         jedis.lpush("site-list", "Google");
         jedis.lpush("site-list", "Taobao");
