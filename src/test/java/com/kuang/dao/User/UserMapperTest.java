@@ -7,8 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Protocol;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class UserMapperTest {
@@ -206,10 +206,23 @@ public class UserMapperTest {
         jedis.lpush("site-list", "Runoob");
         jedis.lpush("site-list", "Google");
         jedis.lpush("site-list", "Taobao");
+        String a = "zzya";
+        String b = "zzy";
+        char c = a.charAt(0);
+        logger.info(a.contains(b));
         //获取存储的数据并输出
         List<String> list = jedis.lrange("site-list", 0, 2);
         for (int i = 0; i < list.size(); i++) {
-            System.out.println("列表项为: " + list.get(i));
+            System.out.println("列表项" + (i + 1) + "为: " + list.get(i));
         }
+    }
+
+    @Test
+    public void run() {
+        System.out.println(2 + "1");
+        String num = 2 + "%";
+        System.out.println(num);
+        System.out.println("0".equals(false));
+        new BigDecimal("2.1").toBigInteger();
     }
 }
