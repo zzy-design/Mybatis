@@ -9,7 +9,10 @@ import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UserMapperTest {
 
@@ -225,5 +228,38 @@ public class UserMapperTest {
         System.out.println(num);
         System.out.println("0".equals(false));
         new BigDecimal("2.1").toBigInteger();
+    }
+
+    @Test
+    public void runn() throws ParseException {
+        String i = "214833520";
+        long total = Long.parseLong(i);
+        System.out.println(total % (1024 * 1024) / 1024);
+        System.out.println(total / (1024 * 1024));
+    }
+
+    @Test
+    public void hashmap() {
+        ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
+        Map synConcurrentHashMap = Collections.synchronizedMap(concurrentHashMap);
+        for (int i = 0; i < 10; i++) {
+            synConcurrentHashMap.put(i, "123");
+            if (i == 2) {
+                continue;
+            }
+            if (i == 6) {
+                break;
+            }
+            if (i == 3) {
+                return;
+            }
+        }
+        System.out.println(synConcurrentHashMap.values());
+    }
+
+    @Test
+    public void replace() {
+        String a = "20200830";
+
     }
 }
